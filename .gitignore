@@ -1,0 +1,9 @@
+# Credenciales
+.env
+
+# Archivos generados por Python
+__pycache__/
+*.pyc
+
+# Checkpoints de Jupyter
+.ipynb_checkpoints/
