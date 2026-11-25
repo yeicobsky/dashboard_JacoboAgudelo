@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine, text, inspect
 from dash import Dash, html, dash_table
 
-# --- Conexión ---
+#Conexión
 load_dotenv()
 engine = create_engine(os.getenv("DATABASE_URL"))
 
-# --- Explorar la tabla logs ---
+#Explorar la tabla logs
 insp = inspect(engine)
 columnas = insp.get_columns("logs", schema="public")
 
@@ -17,13 +17,13 @@ with engine.connect() as conn:
 
 muestra = pd.read_sql("SELECT * FROM public.logs LIMIT 50", engine)
 
-# También en la consola, para que lo copies
+# También en la consola
 print("Total de registros:", total)
 for col in columnas:
     print(f"  {col['name']}: {col['type']}")
 print(muestra.head(10).to_string())
 
-# --- Dashboard ---
+#Dashboard
 app = Dash()
 
 app.layout = html.Div(children=[
